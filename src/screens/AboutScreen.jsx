@@ -1,21 +1,18 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import MainLayout from '../layouts/MainLayout';
+import {useRoute} from '@react-navigation/native';
 
-export default function AboutScreen() {
+const AboutScreen = () => {
+  const route = useRoute();
+  const {task} = route.params;
+
   return (
-    <MainLayout>
-      <View style={styles.container}>
-        <Text style={styles.title}>About</Text>
-        <Text style={styles.text}>This is a simple to do list app</Text>
-        <Text style={styles.text}>
-          This app is suitable for everyone to use.
-        </Text>
-        <Text style={styles.text}>Author: Mobile fun</Text>
-      </View>
-    </MainLayout>
+    <View style={styles.container}>
+      <Text style={styles.title}>About</Text>
+      <Text style={styles.text}>{task}</Text>
+    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -28,7 +25,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   text: {
-    fontSize: 16,
-    marginBottom: 10,
+    fontSize: 18,
   },
 });
+
+export default AboutScreen;
